@@ -23,6 +23,21 @@
     
       
       <item>
+        <title>Installing Logstash</title>
+        
+          <description>&lt;h1 id=&quot;installing-oracle-java-18-jdk&quot;&gt;Installing Oracle JAVA 1.8 JDK&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Fri, 30 Mar 2018 06:27:00 +0000</pubDate>
+        <link>
+        /installing-logstash</link>
+        <guid isPermaLink="true">/installing-logstash</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Git Commit Message</title>
         
           <description>&lt;h1 id=&quot;tldr&quot;&gt;tl;dr&lt;/h1&gt;
