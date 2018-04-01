@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-03-30T10:07:10+00:00</updated><id>/</id><title type="html">My Blog</title><subtitle>Description of my blog</subtitle><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-30T06:29:00+00:00</published><updated>2018-03-30T06:29:00+00:00</updated><id>/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-04-01T04:01:49+00:00</updated><id>/</id><title type="html">My Blog</title><subtitle>Description of my blog</subtitle><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-30T06:29:00+00:00</published><updated>2018-03-30T06:29:00+00:00</updated><id>/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h1&gt;
 
 &lt;p&gt;Redis 소스를 컴파일하고 설치하기 위해 필요한 패키지들을 설치합니다.&lt;/p&gt;
 
@@ -225,4 +225,148 @@ THP는 성능 개선을 목적으로하며, 대부분의 시스템 설정의 성
   &lt;li&gt;&lt;a href=&quot;https://redis.io/topics/quickstart&quot;&gt;Redis Quick Start&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.techandme.se/performance-tips-for-redis-cache-server/&quot;&gt;Performance tips for Redis Cache Server&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://allthatlinux.com/dokuwiki/doku.php?id=thp_transparent_huge_pages_%EA%B8%B0%EB%8A%A5%EA%B3%BC_%EC%84%A4%EC%A0%95_%EB%B0%A9%EB%B2%95&quot;&gt;THP(Transparent Huge Pages) 기능과 설정 방법&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Youngsup Oh</name></author><category term="Redis" /><category term="Getting started" /><summary type="html">Prerequisites</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Youngsup Oh</name></author><category term="Redis" /><category term="Getting started" /><summary type="html">Prerequisites</summary></entry><entry><title type="html">Git Commit Message</title><link href="/git-commit-message" rel="alternate" type="text/html" title="Git Commit Message" /><published>2018-03-18T14:42:22+00:00</published><updated>2018-03-18T14:42:22+00:00</updated><id>/git-commit-message</id><content type="html" xml:base="/git-commit-message">&lt;h1 id=&quot;tldr&quot;&gt;tl;dr&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;첫 줄의 제목은 50자 이내의 명령문으로 작성하며, 대문자로 시작하고 마침표를 사용하지 않는다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;두번째 줄은 제목과 본문을 구분하기 위해 비운다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;나머지 줄에는 구체적으로 어떤 문제를 해결하고 왜 해결해야 했는지 적는다.&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Explain what and why, not how&lt;/li&gt;
+      &lt;li&gt;Wrap the body at 72 characters&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Commit message template:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# If applied, this commit will...
+
+# Explain why this change is being made
+
+# Provide links to any relevant tickets, articles or other resources
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;커밋 메시지 템플릿을 적용하기 위해, 위의 내용을 파일로 저장하고(e.g., ~/.git_commit_msg.txt) 다음 명령을 실행한다:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; commit.template ~/.git_commit_msg.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/git/git-commit-template.png&quot; alt=&quot;git-commit-template&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;구체적인-작성-요령&quot;&gt;구체적인 작성 요령&lt;/h1&gt;
+
+&lt;h2 id=&quot;1-첫-줄제목-행은-무엇을-끝냈는지-명령문으로-작성&quot;&gt;1. 첫 줄(제목 행)은 무엇을 끝냈는지 명령문으로 작성&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;명령문은 Git 커밋 제목 행에 완벽하게 부합한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Git 자체가 우리 대신 자동으로 커밋을 생성하는 경우, 명령조를 사용한다.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;아래 문장에 커밋 내용을 대입하였을 때 문장으로써 적절하면, 그것은 적절한 Git 커밋 제목 행이다.&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;your subject line here&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;커밋 제목 행을 여기에&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;좋은 예&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;refactor subsystem X for readability&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;update getting started documentation&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;remove deprecated methods&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;release version 1.0.0&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;merge pull request #123 from user/branch&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;가독성을 위해 서브시스템 X를 리팩토링한다&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;Getting Started 문서를 갱신한다&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;Deprecated된 메소드를 삭제한다&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;버전 1.0.0으로 판올림한다&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;someuser/somebranch에서 온 pull request #123을 병합한다&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;안좋은 예&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;fixed bug with Y&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;changing behavior of X&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;more fixes for broken stuff&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;If applied, this commit will &lt;strong&gt;sweet new API methods&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;Y로 버그가 고쳐짐&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;X 동작 변화&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;망가진 것을 좀 더 고친 것들&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;만약 이 커밋이 적용되면 이 커밋은 &lt;strong&gt;좋은 새 API 메소드&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;1-1-영문의-커밋-메시지는-과거형으로-작성하지-않는다&quot;&gt;1-1. 영문의 커밋 메시지는 과거형으로 작성하지 않는다.&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fixed 대신 Fix, Added 대신 Add, Changed 대신 Change 로 작성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;1-2-첫-줄의-끝에는-마침표를-사용하지-않는다&quot;&gt;1-2. 첫 줄의 끝에는 마침표를 사용하지 않는다.&lt;/h3&gt;
+
+&lt;h2 id=&quot;2-첫-줄은-50자-내로-나머지-줄은-72자-단위로-개행한다&quot;&gt;2. 첫 줄은 50자 내로, 나머지 줄은 72자 단위로 개행한다.&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;vim을 에디터로 사용 하는 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt; 설정에 다음을 추가:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;autocmd Filetype gitcommit setlocal spell textwidth=72 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;vim을 에디터로 설정하기:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config --global core.editor vim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;화면 예시:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/git/git-commit-vim.png&quot; alt=&quot;git-commit-vim&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-두-번째-줄은-항상-비워-둠&quot;&gt;3. 두 번째 줄은 항상 비워 둠&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;제목과 본문을 구별하기 위함.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;4-나머지-줄은-항상-자세하게-설명&quot;&gt;4. 나머지 줄은 항상 자세하게 설명&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;코드에 어떠한 문제가 있었는지, 왜 그 문제가 발생했는지, 최종적으로 새로 작성한 수정 코드는 어떤 코드인지 최대한 자세하게 설명&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;어떻게 보다는 무엇과 왜를 설명한다(어떤게는 코드가 설명한다)&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Issue 를 닫거나 할 때는 &lt;a href=&quot;https://help.github.com/articles/closing-issues-via-commit-messages/&quot;&gt;Closing issues via commit messages&lt;/a&gt; 가이드 라인에 맞춰 메시지를 작성&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;예를 들어, 커밋 메시지에 &lt;code class=&quot;highlighter-rouge&quot;&gt;fixes #1&lt;/code&gt;과 같이 작성하면 해당 이슈가 자동으로 닫힘.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;5-커밋-메시지-제목의-첫-글자는-대문자로-시작영어로-작성하는-경우&quot;&gt;5. 커밋 메시지 제목의 첫 글자는 대문자로 시작(영어로 작성하는 경우)&lt;/h2&gt;
+
+&lt;h2 id=&quot;6-제목-줄에-무엇을-추가했는지-적었고-더-이상-설명할-필요가-없어도-해당-커밋이-무엇을-의미하는지-어떤-역할을-할-수-있는지에-대해-추가로-작성&quot;&gt;6. 제목 줄에 무엇을 추가했는지 적었고 더 이상 설명할 필요가 없어도 해당 커밋이 무엇을 의미하는지, 어떤 역할을 할 수 있는지에 대해 추가로 작성&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ejmr/php-mode/commit/ac392ad5f0151a90d753592c4a71ce04b8f99fb3&quot;&gt;예시1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ejmr/php-mode/commit/d084cffbf7095b1ebe9090ad18d475c7ba6eba74&quot;&gt;예시2&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;왜 이 커밋을 착성했는지에 대해 추가로 작성하면 더 좋음: &lt;a href=&quot;https://github.com/ejmr/php-mode/commit/7f02722d5aa60d9a95a0560a439e38f80d5e5e87&quot;&gt;예시&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;7-가능한-간결하게-문법에-맞게-작성&quot;&gt;7. 가능한 간결하게 문법에 맞게 작성&lt;/h2&gt;
+
+&lt;h2 id=&quot;참고&quot;&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://tech.ssut.me/2015/06/24/write-a-good-git-commit-message/&quot;&gt;좋은 깃(Git) 커밋 메시지 작성하기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://chris.beams.io/posts/git-commit/&quot;&gt;How to Write a Git Commit Message&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://item4.github.io/2016-11-01/How-to-Write-a-Git-Commit-Message/&quot;&gt;How to Write a Git Commit Message(번역)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://codeinthehole.com/tips/a-useful-template-for-commit-messages/&quot;&gt;A useful template for commit messages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Youngsup Oh</name></author><category term="git" /><summary type="html">tl;dr</summary></entry></feed>
