@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-04-02T01:24:32+00:00</updated><id>/</id><title type="html">My Blog</title><subtitle>Description of my blog</subtitle><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-30T06:29:00+00:00</published><updated>2018-03-30T06:29:00+00:00</updated><id>/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-04-02T08:19:40+00:00</updated><id>/</id><title type="html">My Blog</title><subtitle>Description of my blog</subtitle><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-30T06:29:00+00:00</published><updated>2018-03-30T06:29:00+00:00</updated><id>/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h1&gt;
 
 &lt;p&gt;Redis 소스를 컴파일하고 설치하기 위해 필요한 패키지들을 설치합니다.&lt;/p&gt;
 
@@ -153,7 +153,7 @@ Redis를 설치하고 바로 실행하면 3개의 경고(WARNING) 메시지가 �
 
 &lt;p&gt;해당 값을 변경하기 위해서, 다음과 같이 수행할 수 있습니다 (설정은 재부팅 후 적용됩니다):&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \sysctl -w net.core.somaxconn=511\n'&lt;/span&gt; /etc/rc.local
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \sysctl -w net.core.somaxconn=511\n'&lt;/span&gt; /etc/rc.local
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
@@ -182,7 +182,7 @@ Redis를 설치하고 바로 실행하면 3개의 경고(WARNING) 메시지가 �
 
 &lt;p&gt;해당 경고에 대해서는 다음과 같이 수행하여 설정값을 변경해줍니다:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$a\ \n# ensure redis background save issue\nvm.overcommit_memory = 1\n\nsystctl vm.overcommit_memory=1'&lt;/span&gt; /etc/sysctl.conf
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$a\ \n# ensure redis background save issue\nvm.overcommit_memory = 1\n\nsystctl vm.overcommit_memory=1'&lt;/span&gt; /etc/sysctl.conf
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;disable-thp&quot;&gt;Disable THP&lt;/h2&gt;
@@ -201,14 +201,14 @@ THP는 성능 개선을 목적으로하며, 대부분의 시스템 설정의 성
 
 &lt;p&gt;해당 기능은 아래와 같은 명령을 수행하는 것으로 끌 수 있습니다:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;never | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;tee /sys/kernel/mm/transparent_hugepage/enabled
-&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;never | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;tee /sys/kernel/mm/transparent_hugepage/defrag
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;never | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;tee /sys/kernel/mm/transparent_hugepage/enabled
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;never | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;tee /sys/kernel/mm/transparent_hugepage/defrag
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;시스템 시작시 마다 해당 명령이 수행되도록 하기 위해 &lt;strong&gt;/etc/rc.local&lt;/strong&gt; 파일에 명령을 추가해 놓을 수 있습니다:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/enabled'&lt;/span&gt; /etc/rc.local
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/defrag\n'&lt;/span&gt; /etc/rc.local
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/enabled'&lt;/span&gt; /etc/rc.local
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/defrag\n'&lt;/span&gt; /etc/rc.local
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;

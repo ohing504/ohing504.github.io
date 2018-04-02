@@ -324,7 +324,7 @@ Redis를 설치하고 바로 실행하면 3개의 경고(WARNING) 메시지가 �
 
 <p>해당 값을 변경하기 위해서, 다음과 같이 수행할 수 있습니다 (설정은 재부팅 후 적용됩니다):</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \sysctl -w net.core.somaxconn=511\n'</span> /etc/rc.local
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \sysctl -w net.core.somaxconn=511\n'</span> /etc/rc.local
 </code></pre></div></div>
 
 <hr />
@@ -353,7 +353,7 @@ Redis를 설치하고 바로 실행하면 3개의 경고(WARNING) 메시지가 �
 
 <p>해당 경고에 대해서는 다음과 같이 수행하여 설정값을 변경해줍니다:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="s1">'$a\ \n# ensure redis background save issue\nvm.overcommit_memory = 1\n\nsystctl vm.overcommit_memory=1'</span> /etc/sysctl.conf
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="s1">'$a\ \n# ensure redis background save issue\nvm.overcommit_memory = 1\n\nsystctl vm.overcommit_memory=1'</span> /etc/sysctl.conf
 </code></pre></div></div>
 
 <h2 id="disable-thp">Disable THP</h2>
@@ -372,14 +372,14 @@ THP는 성능 개선을 목적으로하며, 대부분의 시스템 설정의 성
 
 <p>해당 기능은 아래와 같은 명령을 수행하는 것으로 끌 수 있습니다:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>never | <span class="nb">sudo </span>tee /sys/kernel/mm/transparent_hugepage/enabled
-<span class="nb">echo </span>never | <span class="nb">sudo </span>tee /sys/kernel/mm/transparent_hugepage/defrag
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo </span>never | <span class="nb">sudo </span>tee /sys/kernel/mm/transparent_hugepage/enabled
+<span class="nv">$ </span><span class="nb">echo </span>never | <span class="nb">sudo </span>tee /sys/kernel/mm/transparent_hugepage/defrag
 </code></pre></div></div>
 
 <p>시스템 시작시 마다 해당 명령이 수행되도록 하기 위해 <strong>/etc/rc.local</strong> 파일에 명령을 추가해 놓을 수 있습니다:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled'</span> /etc/rc.local
-<span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag\n'</span> /etc/rc.local
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled'</span> /etc/rc.local
+<span class="nv">$ </span><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag\n'</span> /etc/rc.local
 </code></pre></div></div>
 
 <hr />
