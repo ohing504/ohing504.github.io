@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="https://ohing504.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ohing504.github.io/" rel="alternate" type="text/html" /><updated>2018-05-29T03:11:25+00:00</updated><id>https://ohing504.github.io/</id><title type="html">My Blog</title><subtitle>Description of my blog</subtitle><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="https://ohing504.github.io/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-30T06:29:00+00:00</published><updated>2018-03-30T06:29:00+00:00</updated><id>https://ohing504.github.io/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="https://ohing504.github.io/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="https://ohing504.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ohing504.github.io/" rel="alternate" type="text/html" /><updated>2018-05-29T03:12:25+00:00</updated><id>https://ohing504.github.io/</id><title type="html">My Blog</title><subtitle>Description of my blog</subtitle><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="https://ohing504.github.io/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-30T06:29:00+00:00</published><updated>2018-03-30T06:29:00+00:00</updated><id>https://ohing504.github.io/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="https://ohing504.github.io/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h1&gt;
 
 &lt;p&gt;Redis 소스를 컴파일하고 설치하기 위해 필요한 패키지들을 설치합니다.&lt;/p&gt;
 
@@ -95,26 +95,27 @@ PONG
   &lt;li&gt;필요한 경우 init script 내의 항목을 수정합니다:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vi /etc/init.d/redis_6379
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vi /etc/init.d/redis_6379
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;다음으로, 다운받은 Redis 소스에서 설정 템플릿 파일을 /etc/redis/ 디렉토리에 포트번호를 이름으로 지정하여 복사합니다:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;cp redis.conf /etc/redis/6379.conf
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;cp redis.conf /etc/redis/6379.conf
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Redis 인스턴스가 사용하는 디렉토리를 생성합니다:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mkdir /var/redis/6379
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mkdir /var/redis/6379
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;설정 파일(&lt;strong&gt;/etc/redis/6379.conf&lt;/strong&gt;)에서 다음 항목들을 수정합니다:
     &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;bind&lt;/strong&gt; 0.0.0.0 # 서버 외부에서 접근하려는 경우&lt;/li&gt;
       &lt;li&gt;&lt;strong&gt;daemonize&lt;/strong&gt; yes&lt;/li&gt;
       &lt;li&gt;&lt;strong&gt;pidfile&lt;/strong&gt; /var/run/redis_6379.pid&lt;/li&gt;
       &lt;li&gt;&lt;strong&gt;port&lt;/strong&gt; 6379 (원하는 포트로 변경)&lt;/li&gt;
@@ -154,6 +155,11 @@ Redis를 설치하고 바로 실행하면 3개의 경고(WARNING) 메시지가 �
 &lt;p&gt;해당 값을 변경하기 위해서, 다음과 같이 수행할 수 있습니다 (설정은 재부팅 후 적용됩니다):&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \sysctl -w net.core.somaxconn=511\n'&lt;/span&gt; /etc/rc.local
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;CentOS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \net.core.somaxconn = 511\n'&lt;/span&gt; /etc/sysctl.conf
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
@@ -211,6 +217,12 @@ THP는 성능 개선을 목적으로하며, 대부분의 시스템 설정의 성
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/defrag\n'&lt;/span&gt; /etc/rc.local
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;&lt;strong&gt;CentOS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/enabled'&lt;/span&gt; /etc/rc.d/rc.local
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sed &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$i \echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/defrag\n'&lt;/span&gt; /etc/rc.d/rc.local
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;&lt;/p&gt;
 
@@ -225,6 +237,7 @@ THP는 성능 개선을 목적으로하며, 대부분의 시스템 설정의 성
   &lt;li&gt;&lt;a href=&quot;https://redis.io/topics/quickstart&quot;&gt;Redis Quick Start&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.techandme.se/performance-tips-for-redis-cache-server/&quot;&gt;Performance tips for Redis Cache Server&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://allthatlinux.com/dokuwiki/doku.php?id=thp_transparent_huge_pages_%EA%B8%B0%EB%8A%A5%EA%B3%BC_%EC%84%A4%EC%A0%95_%EB%B0%A9%EB%B2%95&quot;&gt;THP(Transparent Huge Pages) 기능과 설정 방법&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hugeserver.com/kb/install-redis-centos/&quot;&gt;How to install Redis 3.2 on CentOS 6 and 7&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Youngsup Oh</name></author><category term="Redis" /><category term="Getting started" /><summary type="html">Prerequisites</summary></entry><entry><title type="html">Installing Logstash</title><link href="https://ohing504.github.io/installing-logstash" rel="alternate" type="text/html" title="Installing Logstash" /><published>2018-03-30T06:27:00+00:00</published><updated>2018-03-30T06:27:00+00:00</updated><id>https://ohing504.github.io/installing-logstash</id><content type="html" xml:base="https://ohing504.github.io/installing-logstash">&lt;h1 id=&quot;installing-oracle-java-18-jdk&quot;&gt;Installing Oracle JAVA 1.8 JDK&lt;/h1&gt;
 
 &lt;p&gt;우선 Logstash 설치에 앞서, Logstash 실행에 필요한 자바를 설치합니다.&lt;/p&gt;

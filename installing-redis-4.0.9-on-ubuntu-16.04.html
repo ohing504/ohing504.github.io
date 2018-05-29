@@ -266,26 +266,27 @@ PONG
   <li>필요한 경우 init script 내의 항목을 수정합니다:</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vi /etc/init.d/redis_6379
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>vi /etc/init.d/redis_6379
 </code></pre></div></div>
 
 <ul>
   <li>다음으로, 다운받은 Redis 소스에서 설정 템플릿 파일을 /etc/redis/ 디렉토리에 포트번호를 이름으로 지정하여 복사합니다:</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>cp redis.conf /etc/redis/6379.conf
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>cp redis.conf /etc/redis/6379.conf
 </code></pre></div></div>
 
 <ul>
   <li>Redis 인스턴스가 사용하는 디렉토리를 생성합니다:</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>mkdir /var/redis/6379
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>mkdir /var/redis/6379
 </code></pre></div></div>
 
 <ul>
   <li>설정 파일(<strong>/etc/redis/6379.conf</strong>)에서 다음 항목들을 수정합니다:
     <ul>
+      <li><strong>bind</strong> 0.0.0.0 # 서버 외부에서 접근하려는 경우</li>
       <li><strong>daemonize</strong> yes</li>
       <li><strong>pidfile</strong> /var/run/redis_6379.pid</li>
       <li><strong>port</strong> 6379 (원하는 포트로 변경)</li>
@@ -325,6 +326,11 @@ Redis를 설치하고 바로 실행하면 3개의 경고(WARNING) 메시지가 �
 <p>해당 값을 변경하기 위해서, 다음과 같이 수행할 수 있습니다 (설정은 재부팅 후 적용됩니다):</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \sysctl -w net.core.somaxconn=511\n'</span> /etc/rc.local
+</code></pre></div></div>
+
+<p><strong>CentOS</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \net.core.somaxconn = 511\n'</span> /etc/sysctl.conf
 </code></pre></div></div>
 
 <hr />
@@ -382,6 +388,12 @@ THP는 성능 개선을 목적으로하며, 대부분의 시스템 설정의 성
 <span class="nv">$ </span><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag\n'</span> /etc/rc.local
 </code></pre></div></div>
 
+<p><strong>CentOS</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled'</span> /etc/rc.d/rc.local
+<span class="nv">$ </span><span class="nb">sudo </span>sed <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'$i \echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag\n'</span> /etc/rc.d/rc.local
+</code></pre></div></div>
+
 <hr />
 <p><strong>NOTE</strong></p>
 
@@ -396,6 +408,7 @@ THP는 성능 개선을 목적으로하며, 대부분의 시스템 설정의 성
   <li><a href="https://redis.io/topics/quickstart">Redis Quick Start</a></li>
   <li><a href="https://www.techandme.se/performance-tips-for-redis-cache-server/">Performance tips for Redis Cache Server</a></li>
   <li><a href="http://allthatlinux.com/dokuwiki/doku.php?id=thp_transparent_huge_pages_%EA%B8%B0%EB%8A%A5%EA%B3%BC_%EC%84%A4%EC%A0%95_%EB%B0%A9%EB%B2%95">THP(Transparent Huge Pages) 기능과 설정 방법</a></li>
+  <li><a href="https://www.hugeserver.com/kb/install-redis-centos/">How to install Redis 3.2 on CentOS 6 and 7</a></li>
 </ul>
 
                 </div>
