@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-08-17T14:08:36+00:00</updated><id>/</id><title type="html">502 Blog</title><subtitle>I'll post anything I interest in.</subtitle><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-27T06:29:00+00:00</published><updated>2018-03-27T06:29:00+00:00</updated><id>/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;ubuntu-1604에-redis-409-설치하기&quot;&gt;Ubuntu 16.04에 Redis 4.0.9 설치하기&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-08-17T14:20:24+00:00</updated><id>/</id><title type="html">502 Blog</title><subtitle>I'll post anything I interest in.</subtitle><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-27T06:29:00+00:00</published><updated>2018-03-27T06:29:00+00:00</updated><id>/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;ubuntu-1604에-redis-409-설치하기&quot;&gt;Ubuntu 16.04에 Redis 4.0.9 설치하기&lt;/h1&gt;
 
 &lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
 
@@ -197,7 +197,7 @@ Redis를 설치하고 바로 실행하면 3개의 경고(WARNING) 메시지가 �
 &lt;h3 id=&quot;disable-thp&quot;&gt;Disable THP&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;# WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. 
+  &lt;p&gt;# WARNING you have Transparent Huge Pages (THP) support enabled in your kernel.
 This will create latency and memory usage issues with Redis.
 To fix this issue run the command ‘echo never &amp;gt; /sys/kernel/mm/transparent_hugepage/enabled’ as root, and add it to your /etc/rc.local in order to retain the setting after a reboot.
 Redis must be restarted after THP is disabled.&lt;/p&gt;
@@ -230,7 +230,7 @@ THP는 성능 개선을 목적으로하며, 대부분의 시스템 설정의 성
 
 &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Docker를 사용하는 경우 &lt;strong&gt;/etc/rc.local&lt;/strong&gt; 파일이 &lt;code class=&quot;highlighter-rouge&quot;&gt;Read-only&lt;/code&gt;로 설정되어 있어서 설정을 변경할 수 없습니다. 
+&lt;p&gt;Docker를 사용하는 경우 &lt;strong&gt;/etc/rc.local&lt;/strong&gt; 파일이 &lt;code class=&quot;highlighter-rouge&quot;&gt;Read-only&lt;/code&gt;로 설정되어 있어서 설정을 변경할 수 없습니다.
 하지만 설정 확인(&lt;code class=&quot;highlighter-rouge&quot;&gt;cat /sys/kernel/mm/transparent_hugepage/enabled&lt;/code&gt;) 시 &lt;code class=&quot;highlighter-rouge&quot;&gt;madvise&lt;/code&gt;로 되어 있고, 메모리 사용 확인(&lt;code class=&quot;highlighter-rouge&quot;&gt;cat /proc/meminfo&lt;/code&gt;)시 HugePages를 사용하고 있지 않은 것 같습니다.&lt;/p&gt;
 
 &lt;hr /&gt;
