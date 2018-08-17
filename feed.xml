@@ -1,4 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-08-17T14:20:24+00:00</updated><id>/</id><title type="html">502 Blog</title><subtitle>I'll post anything I interest in.</subtitle><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-27T06:29:00+00:00</published><updated>2018-03-27T06:29:00+00:00</updated><id>/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;ubuntu-1604에-redis-409-설치하기&quot;&gt;Ubuntu 16.04에 Redis 4.0.9 설치하기&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-08-17T14:29:54+00:00</updated><id>/</id><title type="html">502 Blog</title><subtitle>I'll post anything I interest in.</subtitle><entry><title type="html">Installing Logstash</title><link href="/installing-logstash" rel="alternate" type="text/html" title="Installing Logstash" /><published>2018-03-30T06:27:00+00:00</published><updated>2018-03-30T06:27:00+00:00</updated><id>/installing-logstash</id><content type="html" xml:base="/installing-logstash">&lt;h1 id=&quot;logstash-설치하기&quot;&gt;Logstash 설치하기&lt;/h1&gt;
+
+&lt;h2 id=&quot;installing-oracle-java-18-jdk&quot;&gt;Installing Oracle JAVA 1.8 JDK&lt;/h2&gt;
+
+&lt;p&gt;우선 Logstash 설치에 앞서, Logstash 실행에 필요한 자바를 설치합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;java -version&lt;/code&gt; 명령어를 통해 현재 자바 버전을 확인하고, 만약 1.7 버전이 설치되어 있다면 다음 명령을 통해 삭제합니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum remove java-1.7.0-openjdk.x86_64 &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그 뒤, 1.8 버전의 자바를 설치합니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum install java-1.8.0-openjdk-devel.x86_64 &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;설치 완료 후 자바 버전을 확인하면, 다음과 유사하게 출력되야 합니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;java &lt;span class=&quot;nt&quot;&gt;-version&lt;/span&gt;
+java version &lt;span class=&quot;s2&quot;&gt;&quot;1.8.0_65&quot;&lt;/span&gt;
+Java&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;TM&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; SE Runtime Environment &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;build 1.8.0_65-b17&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Java HotSpot&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;TM&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 64-Bit Server VM &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;build 25.65-b01, mixed mode&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;installing-logstash-from-package-repositories&quot;&gt;Installing Logstash from Package Repositories&lt;/h2&gt;
+
+&lt;h3 id=&quot;apt&quot;&gt;APT&lt;/h3&gt;
+
+&lt;p&gt;Public Signing Key를 다운로드 받아 설치합니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget &lt;span class=&quot;nt&quot;&gt;-qO&lt;/span&gt; - https://artifacts.elastic.co/GPG-KEY-elasticsearch | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-key add -
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Debian의 경우 뒤의 과정을 하기 전에, apt-transport-https 패키지의 설치가 필요할 수 있습니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install apt-transport-https
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Elastic 저장소 정보를 ‘/etc/apt/sources.list.d/elastic-6.x.list’에 추가합니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;deb https://artifacts.elastic.co/packages/6.x/apt stable main&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;tee &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; /etc/apt/sources.list.d/elastic-6.x.list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;apt-get을 사용하여 Logstash를 설치합니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install logstash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Logstash 실행에 관한 내용은 &lt;a href=&quot;https://www.elastic.co/guide/en/logstash/6.2/running-logstash.html&quot;&gt;Runing Logstash&lt;/a&gt;를 참고하세요.&lt;/p&gt;
+
+&lt;h3 id=&quot;yum&quot;&gt;YUM&lt;/h3&gt;
+
+&lt;p&gt;Public Signing Key를 다운로드 받아 설치합니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;rpm &lt;span class=&quot;nt&quot;&gt;--import&lt;/span&gt; https://artifacts.elastic.co/GPG-KEY-elasticsearch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음 내용을 /etc/yum.repos.d/ 디렉토리 내에 .repo 확장자를 가지는 파일(예: logstash.repo)에 저장합니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[logstash-6.x]
+name=Elastic repository for 6.x packages
+baseurl=https://artifacts.elastic.co/packages/6.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;yum을 사용하여 Logstash를 설치합니다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum install logstash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Logstash 실행에 관한 내용은 &lt;a href=&quot;https://www.elastic.co/guide/en/logstash/6.2/running-logstash.html&quot;&gt;Runing Logstash&lt;/a&gt;를 참고하세요.&lt;/p&gt;
+
+&lt;h2 id=&quot;참고&quot;&gt;참고&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/logstash/current/installing-logstash.html&quot;&gt;Installing Logstash&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Youngsup Oh</name></author><category term="Logstash" /><category term="Getting started" /><summary type="html">Logstash 설치하기</summary></entry><entry><title type="html">Installing Redis 4.0.9 on Ubuntu 16.04</title><link href="/installing-redis-4.0.9-on-ubuntu-16.04" rel="alternate" type="text/html" title="Installing Redis 4.0.9 on Ubuntu 16.04" /><published>2018-03-27T06:29:00+00:00</published><updated>2018-03-27T06:29:00+00:00</updated><id>/installing-redis-4.0.9-on-ubuntu-16.04</id><content type="html" xml:base="/installing-redis-4.0.9-on-ubuntu-16.04">&lt;h1 id=&quot;ubuntu-1604에-redis-409-설치하기&quot;&gt;Ubuntu 16.04에 Redis 4.0.9 설치하기&lt;/h1&gt;
 
 &lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
 
