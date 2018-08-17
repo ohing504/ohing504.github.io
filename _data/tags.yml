@@ -1,4 +1,4 @@
 getting-started:
   name: getting-started
-  description: False
-  cover: False
+  description: Quick start documents that targets people without prior experience
+  cover: assets/images/covers/getting-started.jpg
