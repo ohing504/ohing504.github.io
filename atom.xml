@@ -8,9 +8,24 @@
     
       
       <item>
+        <title>Installing Redis 4.0.9 on Ubuntu 16.04</title>
+        
+          <description>&lt;h1 id=&quot;ubuntu-1604에-redis-409-설치하기&quot;&gt;Ubuntu 16.04에 Redis 4.0.9 설치하기&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Tue, 27 Mar 2018 06:29:00 +0000</pubDate>
+        <link>
+        /installing-redis-4.0.9-on-ubuntu-16.04</link>
+        <guid isPermaLink="true">/installing-redis-4.0.9-on-ubuntu-16.04</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Git Commit Message</title>
         
-          <description>&lt;h2 id=&quot;tldr&quot;&gt;tl;dr&lt;/h2&gt;
+          <description>&lt;h1 id=&quot;git-commit-message-작성하기&quot;&gt;Git Commit Message 작성하기&lt;/h1&gt;
 
 </description>
         
