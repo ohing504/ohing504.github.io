@@ -1,4 +1,176 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-08-17T14:29:54+00:00</updated><id>/</id><title type="html">502 Blog</title><subtitle>I'll post anything I interest in.</subtitle><entry><title type="html">Installing Logstash</title><link href="/installing-logstash" rel="alternate" type="text/html" title="Installing Logstash" /><published>2018-03-30T06:27:00+00:00</published><updated>2018-03-30T06:27:00+00:00</updated><id>/installing-logstash</id><content type="html" xml:base="/installing-logstash">&lt;h1 id=&quot;logstash-설치하기&quot;&gt;Logstash 설치하기&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-08-19T08:41:05+00:00</updated><id>/</id><title type="html">502 Blog</title><subtitle>I'll post anything I interest in.</subtitle><entry><title type="html">Integrating Azure Notebooks (Jupyter Notebooks) with GitHub</title><link href="/integrating-azure-notebooks-with-github" rel="alternate" type="text/html" title="Integrating Azure Notebooks (Jupyter Notebooks) with GitHub" /><published>2018-07-26T01:07:00+00:00</published><updated>2018-07-26T01:07:00+00:00</updated><id>/integrating-azure-notebooks-with-github</id><content type="html" xml:base="/integrating-azure-notebooks-with-github">&lt;h1 id=&quot;integrating-azure-notebooks-jupyter-notebooks-with-github&quot;&gt;Integrating Azure Notebooks (Jupyter Notebooks) with GitHub&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;오역 주의&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;원문: &lt;a href=&quot;https://medium.com/@mikeclymer/integrating-azure-notebooks-jupyter-notebooks-with-github-fd847e941e4&quot;&gt;Integrating Azure Notebooks (Jupyter Notebooks) with GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+
+&lt;p&gt;Jupyter Notebook 은 다양한 유형의 분석 분야에서 사용할 수 있는 훌륭한 도구다. 최는 Jupyter Notebook 을 사용하여 관심있는 다양한 주제에 대한 연구를 시작했다. 그것은 나의 학습 효과를 높이는데 효과적이었다.&lt;/p&gt;
+
+&lt;p&gt;온라인 상에는 Jupyter Notebook 을 로컬 컴퓨팅 장치나 다양한 클라우드 호스팅 공급자에 설치하는 방법에 대한 자료가 많다. 하지만, 민감한 정보가있는 작업을 하지 않을 경우 Jupyter Notebook 을 설치하고 관리하는것은 필요로하는 것보다 많은 오버 헤드가 발생할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;Microsoft 는 Jupyter Notebook 을 클라우드 호스팅 해주는 &lt;strong&gt;Azure Notebooks&lt;/strong&gt; 서비스를 무료로 제공한다. Azure Notebooks 은 현재 적극적으로 개발 중이며 자주 업데이트 되고 있으며, 노트북 공유를 쉽게 해준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://notebooks.azure.com/&quot;&gt;Microsoft Azure Notebooks - Online Jupyter Notebooks&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;나는 여전히 GitHub 를 사용하여 Azure Notbooks 외부에서 내 노트북을 보관하고 버전을 관리하는 것이 중요하다고 생각한다. 만약 내 노트북에 접근을 제한하려고 하거나 다른 Jupyter 설치 환경에서 사용하려고 한다면 GitHub 저장소를 통해 간단히 할 수 있다. Azure Notebooks 은 GitHub 와 쉽게 통합 가능하며 아래에서 통합 방법을 소개한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;azure-notebooks-와-github-저장소-통합-방법&quot;&gt;Azure Notebooks 와 GitHub 저장소 통합 방법&lt;/h2&gt;
+
+&lt;h3 id=&quot;step-1-azure-notebooks-library-를-위한-새로운-github-저장소-생성&quot;&gt;Step 1. Azure Notebooks Library 를 위한 새로운 GitHub 저장소 생성&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/integrating-azure-notebooks-with-github/step1-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;step-2-azure-notebooks-에서-새로운-라이브러리-생성&quot;&gt;Step 2. Azure Notebooks 에서 새로운 라이브러리 생성&lt;/h3&gt;
+
+&lt;p&gt;Azure Notebooks 의 Libraries 화면에서, ‘Create New Library’ 버튼을 클릭 후 표시되는 창에서 ‘From GitHub’ 탭을 선택한다. 위 단계에서 생성한 GitHub 저장소 정보를 알맞게 채운 후 ‘Import’를 하면 약간의 시간이 흐른 뒤 라이브러리 생성 완료!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/integrating-azure-notebooks-with-github/step2-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/integrating-azure-notebooks-with-github/step2-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;step-3-라이브러리-터미널에서-git-명령어를-통해-github-에-접속하기-위한-설정&quot;&gt;Step 3. 라이브러리 터미널에서 Git 명령어를 통해 GitHub 에 접속하기 위한 설정&lt;/h3&gt;
+
+&lt;p&gt;Azure Notebooks 의 &lt;a href=&quot;https://notebooks.azure.com/help/libraries/creating/import-from-github&quot;&gt;Import from GitHub&lt;/a&gt; 문서의 끝에 보면 다음과 같은 내용이 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The GitHub repo will be cloned into your library including all of the notebooks and other files. The Git history will also be preserved. You can then use standard Git commands from the &lt;a href=&quot;https://notebooks.azure.com/help/libraries/terminal&quot;&gt;Terminal window&lt;/a&gt; to commit changes, pull changes from GitHub, etc…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Azure Notebooks 은 우리의 GitHub 저장소를 복제(clone)하여 새로운 라이브러리를 만든다. 새로운 노트를 추가하고 변경하면 원격 GitHub 저장소에 변경 사항을 커밋(commit) 하고 푸시(push) 할 수 있기를 원하겠지만 현재 Azure Notebooks 에서는 이러한 기능을 자동으로 지원해 주지 않는다. 하지만 위에서 인용에서 얘기하는 것처럼 터미널에서 모든 Git 명령을 수동으로 실행할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;노트북 서버의 터미널에서 복제 된 저장소에 대해 Git 구성 설정을 할 수 있다. Git 전역 설정은 노트북 서버 세션에서 유지되지 않으므로 사용자가 설정 한 모든 Git 구성 설정은 로컬 저장소 레벨에서 해야한다.&lt;/p&gt;
+
+&lt;p&gt;우선 Azure Notebooks 의 라이브러리에서 터미널을 실행한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/integrating-azure-notebooks-with-github/step3-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;터미널에서 현재 위치를 &lt;code class=&quot;highlighter-rouge&quot;&gt;~/library&lt;/code&gt; 폴더로 이동한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/library
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/integrating-azure-notebooks-with-github/step3-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;원격 GitHub 저장소에 접근하기 위해 로컬 Git 구성을 설정한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config user.name &lt;span class=&quot;s2&quot;&gt;&quot;Your Name&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config user.email &lt;span class=&quot;s2&quot;&gt;&quot;Your Email&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git config -l&lt;/code&gt; 명령을 사용하면 다음과 같이 설정된 값들을 확인할 수 있다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;
+core.repositoryformatversion&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+core.filemode&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;core.bare&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false
+&lt;/span&gt;core.logallrefupdates&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;remote.origin.url&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://github.com/ohing504/deep-learning-from-scratch
+remote.origin.fetch&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;+refs/heads/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:refs/remotes/origin/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+branch.master.remote&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;origin
+branch.master.merge&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;refs/heads/master
+user.name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Your Name
+user.email&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Your Email
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Optional! 편의를 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;git config push.default simple&lt;/code&gt; 설정을 통해 &lt;code class=&quot;highlighter-rouge&quot;&gt;push.default&lt;/code&gt; 경고 메시지가 출력되지 않도록 할 수 있다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Before config push.default&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push
+warning: push.default is &lt;span class=&quot;nb&quot;&gt;unset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; its implicit value has changed &lt;span class=&quot;k&quot;&gt;in
+&lt;/span&gt;Git 2.0 from &lt;span class=&quot;s1&quot;&gt;'matching'&lt;/span&gt; to &lt;span class=&quot;s1&quot;&gt;'simple'&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; To squelch this message
+and maintain the traditional behavior, use:
+
+    git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+    git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; push.default simple
+
+When push.default is &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;to &lt;span class=&quot;s1&quot;&gt;'matching'&lt;/span&gt;, git will push &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;branches
+to the remote branches that already exist with the same name.
+
+Since Git 2.0, Git defaults to the more conservative &lt;span class=&quot;s1&quot;&gt;'simple'&lt;/span&gt;
+behavior, which only pushes the current branch to the corresponding
+remote branch that &lt;span class=&quot;s1&quot;&gt;'git pull'&lt;/span&gt; uses to update the current branch.
+
+See &lt;span class=&quot;s1&quot;&gt;'git help config'&lt;/span&gt; and search &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'push.default'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;further information.
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;the &lt;span class=&quot;s1&quot;&gt;'simple'&lt;/span&gt; mode was introduced &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;Git 1.7.11. Use the similar mode
+&lt;span class=&quot;s1&quot;&gt;'current'&lt;/span&gt; instead of &lt;span class=&quot;s1&quot;&gt;'simple'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;you sometimes use older versions of Git&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+Username &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://github.com'&lt;/span&gt;: ^C
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# After 'git config push.default simple'&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push
+Username &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://github.com'&lt;/span&gt;: ^C
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;step-4-원격-github-저장소에-대한-접속-테스트&quot;&gt;Step 4. 원격 GitHub 저장소에 대한 접속 테스트&lt;/h3&gt;
+
+&lt;p&gt;원격 GitHub 저장소에 접속이 정상적으로 되는지 테스트하기 위해 라이브러리에 새로운 노트를 추가한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/integrating-azure-notebooks-with-github/step4-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;노트북 서버의 터미널에서 새로 생성한 노트를 Git 에 추가하고 커밋, 푸시한다:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/library
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Adding the notebook for my study of chapter 1.&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push
+Username &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://github.com'&lt;/span&gt;: GitHub username 입력
+Password &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://username@github.com'&lt;/span&gt;: GitHub 비밀번호 입력
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/integrating-azure-notebooks-with-github/step4-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;GitHub 저장소에 정상적으로 추가되었는지 확인한다:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/integrating-azure-notebooks-with-github/step4-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;GitHub 와 Azure Notebooks 연동이 완료되었다. 이 방법은 Jupyter Notebooks 이 포함된 기존의 GitHub 저장소에 대해서도 동작한다. 내가 읽은 바로는, Azure Notebooks 은 앞으로 GitHub 와 더 많은 상호 작용을 자동화 할 것으로 보인다.&lt;/p&gt;</content><author><name>Youngsup Oh</name></author><category term="GitHub" /><category term="Azure Notebooks" /><category term="Jupyter Notebook" /><category term="Microsoft Azure" /><category term="Jupyter" /><summary type="html">Integrating Azure Notebooks (Jupyter Notebooks) with GitHub</summary></entry><entry><title type="html">Code Combat 소개</title><link href="/introduce-codecombat" rel="alternate" type="text/html" title="Code Combat 소개" /><published>2018-06-30T15:00:00+00:00</published><updated>2018-06-30T15:00:00+00:00</updated><id>/introduce-codecombat</id><content type="html" xml:base="/introduce-codecombat">&lt;h1 id=&quot;code-combat&quot;&gt;Code Combat&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The Most engaging game for learning programming.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://codecombat.com/&quot;&gt;코드 컴뱃(Code Combat)&lt;/a&gt;은 게임을 하면서 프로그래밍을 학습할 수 있는 서비스입니다.
+게임을 공략하듯, 각 스테이지를 클리어하며 프로그래밍을 배우다 보면 아이템도 얻을 수 있고, 새로운 능력들도 쓸 수 있습니다!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/codecombat/worldmap.png&quot; alt=&quot;codecombat-worldmap&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;코드 컴뱃에는 프로그래밍의 기본적인 것들을 배울 수 있는 과정과, 게임 개발, 웹 개발 등의 내용을 배울 수 있는 과정들이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/codecombat/kithgard-dungeon.png&quot; alt=&quot;kithgard-dungeon&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;각 학습 과정에는 여러 스테이지가 있어, 각각의 스테이지를 클리어하며 프로그래밍을 배우는 구조입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/codecombat/select-hero.png&quot; alt=&quot;select-hero&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;또한 전사를 비롯해 레인저나 마법사 영웅을 선택해 플레이할 수도 있습니다.&lt;br /&gt;
+(다만, 전사를 제외한 다른 직업의 영웅들을 사용하기 위해선 유료 구독이 필요합니다…)&lt;/p&gt;
+
+&lt;p&gt;현재 4 가지 언어로 게임 플레이가 가능합니다. 프로그래밍이 처음이거나 초보 분이시라면 Python 을 추천드려요.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Python (기본) - 간단하지만 강력합니다.&lt;/li&gt;
+  &lt;li&gt;JavaScript - 웹을 위한 언어.&lt;/li&gt;
+  &lt;li&gt;CoffeScript (고급) - 향상된 자바스크립트 문법.&lt;/li&gt;
+  &lt;li&gt;Lua (고급) - 게임 스크립팅 언어.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/codecombat/dungeons-of-kithgard.png&quot; alt=&quot;dungeons-of-kithgard&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;각 스테이지에는 목표가 있고, 이를 완료하기 위해 우측의 에디터에 코드를 작성하면 됩니다.
+스테이지를 클리어하기 위한 방법은 우측 상단의 &lt;code class=&quot;highlighter-rouge&quot;&gt;힌트&lt;/code&gt;를 통해 더 자세히 배울 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;코드를 모두 작성했다면, &lt;code class=&quot;highlighter-rouge&quot;&gt;실행&lt;/code&gt;을 눌러 스테이지를 클리어합시다!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/codecombat/complete-level.png&quot; alt=&quot;complete-level&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;스테이지를 클리어하면 경험치와 수정, 아이템을 얻을 수 있고, 아이템을 착용하면 사용할 수 있는 기능들도 많아져요.&lt;/p&gt;
+
+&lt;p&gt;그럼, 남은 스테이지를 모두 클리어해서 프로그래밍을 배워봅시다!!!&lt;/p&gt;</content><author><name>Youngsup Oh</name></author><category term="Coding Study" /><summary type="html">Code Combat</summary></entry><entry><title type="html">Installing Logstash</title><link href="/installing-logstash" rel="alternate" type="text/html" title="Installing Logstash" /><published>2018-03-30T06:27:00+00:00</published><updated>2018-03-30T06:27:00+00:00</updated><id>/installing-logstash</id><content type="html" xml:base="/installing-logstash">&lt;h1 id=&quot;logstash-설치하기&quot;&gt;Logstash 설치하기&lt;/h1&gt;
 
 &lt;h2 id=&quot;installing-oracle-java-18-jdk&quot;&gt;Installing Oracle JAVA 1.8 JDK&lt;/h2&gt;
 
