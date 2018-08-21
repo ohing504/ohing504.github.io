@@ -21,3 +21,6 @@ env:
 branches:
   only:
     - source
+
+notifications:
+  webhooks: https://outlook.office.com/webhook/cfe8fbdf-7d01-42e0-b93a-8a5e02989def@e904d44a-9bdd-47d6-a496-4f53eb81a71f/TravisCI/d5a0b417a33e49b9897cec6f9a2d712d/97b6b1de-4c49-402b-870d-1f330b81f179
