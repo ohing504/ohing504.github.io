@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Introduced by My Agents — AI 에이전트가 작성한 개발자 레퍼런스 포트폴리오"><meta property="og:title" content="Project Report: klming-flutter — Youngsup Oh"><meta property="og:description" content="Introduced by My Agents — AI 에이전트가 작성한 개발자 레퍼런스 포트폴리오"><meta property="og:type" content="website"><meta property="og:url" content="https://ohing504.github.io"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"><title>Project Report: klming-flutter — Youngsup Oh</title><link rel="stylesheet" href="/_astro/career.Zoe6Ivy9.css"></head> <body class="bg-bg text-text antialiased"> <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-accent focus:text-white focus:rounded-lg">Skip to content</a>  <main id="main" class="py-24 md:py-32"> <div class="max-w-4xl mx-auto px-6"> <div data-animate class="mb-12"> <a href="/" class="inline-flex items-center gap-1.5 text-sm text-text-dim hover:text-accent transition-colors mb-8"> <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"> <path d="M8 2L4 6l4 4"></path> </svg>
+Back
+</a> <h1 class="text-3xl md:text-4xl font-heading font-bold gradient-text">Project Report: klming-flutter</h1> <div class="flex items-center gap-3 mt-3 text-sm text-text-dim"> <span></span> <span>·</span> <span></span> </div> </div> <article class="glass rounded-2xl p-6 md:p-10 prose-dark overflow-hidden"> <h1>Project Report: klming-flutter</h1>
+<h2>Analysis Context</h2>
+<ul>
+<li><strong>Agent</strong>: Claude Code (claude-opus-4-6)</li>
+<li><strong>Project</strong>: klming-flutter (클라이밍 커뮤니티 모바일 앱)</li>
+<li><strong>Privacy level</strong>: Full (App Store / Google Play 출시 앱)</li>
+<li><strong>Commits reviewed</strong>: 30+ (최근 6개월)</li>
+<li><strong>Sessions analyzed</strong>: 84 (+ CI/CD runner 103)</li>
+<li><strong>Period</strong>: 2025-08 ~ 2026-03</li>
+<li><strong>Confidence</strong>: High</li>
+</ul>
+<hr>
+<h2>Project Overview</h2>
+<p>클라이밍(암벽등반) 커뮤니티를 위한 모바일 앱입니다. 운동 기록, 등급 트래킹, 암장(클라이밍 짐) 검색, 멤버십/이용권 관리, 홈 위젯 캘린더, 다국어 지원(i18n) 등을 제공합니다. App Store와 Google Play에 출시된 프로덕션 앱으로, 에러 모니터링과 인앱 결제를 운영합니다.</p>
+<p><strong>Tech Stack</strong>: Flutter (Dart), Riverpod 3.0, Supabase (Auth/DB/Storage), shadcn_flutter, go_router, slang (i18n)</p>
+<hr>
+<h2>User&#39;s Role &amp; Contributions</h2>
+<p>Youngsup은 이 프로젝트의 유일한 개발자이자 제품 매니저입니다. 아키텍처 설계, 구현, 테스트, 빌드/배포 자동화(GitHub Actions), 사용자 피드백 대응까지 전체를 담당합니다. 오랜 기간 지속적으로 유지보수하며 발전시키고 있는 프로젝트입니다.</p>
+<hr>
+<h2>Technical Decisions</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Chosen Approach</th>
+<th>Reasoning</th>
+<th>Alternatives Considered</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>상태 관리</td>
+<td>Riverpod 3.0</td>
+<td>안전한 비동기 처리, AutoDispose로 메모리 관리</td>
+<td>Provider, BLoC</td>
+</tr>
+<tr>
+<td>백엔드 접근</td>
+<td>DI 패턴</td>
+<td>테스트 가능성 + 목 주입 용이</td>
+<td>글로벌 인스턴스 직접 사용 (레거시)</td>
+</tr>
+<tr>
+<td>테스트 패턴</td>
+<td>Fake chain builders</td>
+<td>서드파티 SDK의 목킹 한계를 Fake 빌더 패턴으로 해결</td>
+<td>순수 Mock (한계 있음)</td>
+</tr>
+<tr>
+<td>Mutation 패턴</td>
+<td>WidgetRef에서 직접 호출 + invalidate</td>
+<td>별도 mutation provider의 auto-dispose 문제 원천 차단</td>
+<td>별도 mutation provider</td>
+</tr>
+<tr>
+<td>UI 테마</td>
+<td>테마 토큰 시스템</td>
+<td>하드코딩 컬러 제거, 다크모드/라이트모드 일관성</td>
+<td>커스텀 컬러 팔레트 (레거시, 제거됨)</td>
+</tr>
+<tr>
+<td>i18n</td>
+<td>slang + 하드코딩 한글 → i18n 키 전환</td>
+<td>다국어 지원, 해외 사용자 대응</td>
+<td>한글 하드코딩 유지</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Notable Problem-Solving</h2>
+<p><strong>상태 관리 안티패턴 대규모 수정.</strong> Riverpod 3.0 마이그레이션 과정에서 안전하지 않은 상태 접근 패턴을 안전한 접근 패턴으로 일괄 수정. 수동 상태 관리를 자동화된 패턴으로 전환하여 프로젝트 전반의 안정성을 높였습니다.</p>
+<p><strong>DI 패턴 전환.</strong> 글로벌 인스턴스 직접 사용에서 DI 패턴으로 전환하여 테스트 가능성을 확보. 테스트 인프라로 mocks, stubs, test container, fixtures를 체계적으로 구축했습니다. 다수의 파일이 아직 레거시 방식을 사용 중이라 점진적 전환이 진행 중입니다.</p>
+<p><strong>프레임워크 버그 발견 및 문서화.</strong> Flutter hooks에서 특정 라이프사이클에서의 위젯 컨텍스트 접근 시 크래시가 발생하는 문제를 발견하고, 비동기 + mounted 체크로 해결한 뒤 규칙으로 문서화했습니다.</p>
+<p><strong>사용자 피드백 체계적 대응.</strong> 해외 사용자가 위젯 버그와 기능 요청을 보냈을 때, brainstorming 스킬로 각 이슈를 분석하고 체계적으로 수정했습니다.</p>
+<p><strong>CI/CD 자동 코드 리뷰.</strong> GitHub Actions에서 AI 에이전트를 활용한 자동 PR 리뷰 봇을 구축하여 다수의 세션을 자동으로 운영했습니다.</p>
+<hr>
+<h2>Characteristics Revealed</h2>
+<p>이 프로젝트에서 특히 드러나는 특성은 <strong>프로덕션 앱 운영자의 감각</strong>입니다. 에러 모니터링에서 발견된 크리티컬 이슈를 즉시 수정하고, 보안 취약점을 사전에 제거하는 등 — 프로덕션에서 실제로 발생하는 문제에 대한 민감도가 높습니다.</p>
+<p>또한 <strong>테스트 인프라에 대한 투자</strong>가 인상적입니다. 수백 개의 테스트를 유지하면서, Fake 빌더, test container, fixture 시스템을 체계적으로 구축했습니다. 테스트 환경의 세부 요구사항까지 문서화합니다.</p>
+<p><strong>레거시 코드를 점진적으로 개선하는 인내</strong>도 보입니다. 오래된 프로젝트에서 테마 시스템 전환, DI 전환, i18n 전환 등을 각각 별도 PR로 진행하며 기존 기능을 깨지 않으면서 품질을 높입니다.</p>
+<hr>
+<h2>Git &amp; GitHub Analysis</h2>
+<ul>
+<li><strong>Commit style</strong>: 한글 Conventional Commits, PR 번호 참조. 변경 범위를 스코프로 표시</li>
+<li><strong>Commit frequency</strong>: 지속적 유지보수 패턴. 버그 수정, 리팩토링, 기능 추가가 균형 있게 분포</li>
+<li><strong>PR patterns</strong>: 기능별 분리된 PR, squash merge 선호. 시맨틱 버전 릴리즈를 체계적으로 관리</li>
+<li><strong>CI/CD engagement</strong>: 자동 PR 리뷰, 빌드 테스트 자동화</li>
+<li><strong>Dependency management</strong>: 미사용 패키지 일괄 정리, 메이저 업그레이드, Best Practices Gap 분석 수행</li>
+</ul>
+<hr>
+<h2>Summary</h2>
+<p>klming-flutter는 Youngsup의 프로덕션 앱 운영 능력과 점진적 코드 개선 감각이 가장 잘 드러나는 프로젝트입니다. 다수의 PR, 수백 개의 테스트, 에러 모니터링, CI 자동 리뷰가 보여주는 것은 단순한 사이드 프로젝트가 아니라 실제 사용자가 있는 프로덕션 앱을 장기간 책임감 있게 운영하는 개발자의 모습입니다. 상태 관리 안티패턴 수정, DI 전환, 테마 시스템 개선 등 기술 부채를 체계적으로 해소하면서도 해외 사용자 피드백에 즉시 대응하는 균형감이 인상적입니다.</p>
+ </article> </div> </main> <footer class="py-12 mt-8"> <div class="max-w-6xl mx-auto px-6"> <div class="section-divider mb-8"></div> <div class="flex flex-col md:flex-row items-center justify-between gap-4"> <div class="flex items-center gap-4"> <a href="https://github.com/ohing504" target="_blank" rel="noopener noreferrer" class="text-text-dim hover:text-accent transition-colors" aria-label="GitHub"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> </div> <div class="text-center md:text-right"> <p class="text-xs text-text-dim">
+Introduced by My Agents · Built with
+<a href="https://github.com/ohing504/skills" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">@ohing504/skills</a> </p> <p class="text-xs text-text-dim mt-1">Last updated: 2026-03-13</p> </div> </div> </div> </footer>  <script type="module">const l=new IntersectionObserver(e=>{e.forEach(r=>{r.isIntersecting&&r.target.classList.add("visible")})},{threshold:.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll("[data-animate]").forEach(e=>{l.observe(e)});document.querySelectorAll(".prose-dark table").forEach(e=>{const r=Array.from(e.querySelectorAll("th")).map(t=>t.textContent?.trim()||"");e.querySelectorAll("tbody tr").forEach(t=>{t.querySelectorAll("td").forEach((a,o)=>{r[o]&&a.setAttribute("data-label",r[o])})})});</script> </body> </html>
