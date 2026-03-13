@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Introduced by My Agents — AI 에이전트가 작성한 개발자 레퍼런스 포트폴리오"><meta property="og:title" content="Project Report: financial — Youngsup Oh"><meta property="og:description" content="Introduced by My Agents — AI 에이전트가 작성한 개발자 레퍼런스 포트폴리오"><meta property="og:type" content="website"><meta property="og:url" content="https://ohing504.github.io"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"><title>Project Report: financial — Youngsup Oh</title><link rel="stylesheet" href="/_astro/career.Zoe6Ivy9.css"></head> <body class="bg-bg text-text antialiased"> <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-accent focus:text-white focus:rounded-lg">Skip to content</a>  <main id="main" class="py-24 md:py-32"> <div class="max-w-4xl mx-auto px-6"> <div data-animate class="mb-12"> <a href="/" class="inline-flex items-center gap-1.5 text-sm text-text-dim hover:text-accent transition-colors mb-8"> <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"> <path d="M8 2L4 6l4 4"></path> </svg>
+Back
+</a> <h1 class="text-3xl md:text-4xl font-heading font-bold gradient-text">Project Report: financial</h1> <div class="flex items-center gap-3 mt-3 text-sm text-text-dim"> <span></span> <span>·</span> <span></span> </div> </div> <article class="glass rounded-2xl p-6 md:p-10 prose-dark overflow-hidden"> <h1>Project Report: financial</h1>
+<h2>Analysis Context</h2>
+<ul>
+<li><strong>Agent</strong>: Claude Code (claude-opus-4-6)</li>
+<li><strong>Project</strong>: 개인 금융 관리 웹 앱</li>
+<li><strong>Privacy level</strong>: Anonymized (비공개 프로젝트)</li>
+<li><strong>Commits reviewed</strong>: 30+ (최근 6개월)</li>
+<li><strong>Sessions analyzed</strong>: 87</li>
+<li><strong>Period</strong>: 2025-09 ~ 2026-03</li>
+<li><strong>Confidence</strong>: High</li>
+</ul>
+<hr>
+<h2>Project Overview</h2>
+<p>개인 자산, 투자, 대출, 보험, 거래 내역을 통합 관리하는 금융 대시보드 웹 앱입니다. 자산 그룹화, 계좌별 스냅샷과 거래 내역 추적, AI 에이전트 연동 인터페이스를 제공합니다.</p>
+<p><strong>Tech Stack</strong>: Next.js, React, TypeScript, ORM, PostgreSQL (BaaS), 스키마 검증 라이브러리, E2E/단위 테스트, UI 컴포넌트 라이브러리, i18n</p>
+<hr>
+<h2>User&#39;s Role &amp; Contributions</h2>
+<p>Youngsup은 이 프로젝트의 유일한 개발자이자 아키텍트입니다. 스키마 설계부터 프론트엔드 UI까지 전체 스택을 담당하며, 특히 서비스 레이어 아키텍처를 직접 설계하고 여러 단계에 걸쳐 도메인별 전환을 주도했습니다.</p>
+<hr>
+<h2>Technical Decisions</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Chosen Approach</th>
+<th>Reasoning</th>
+<th>Alternatives Considered</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>데이터 접근 패턴</td>
+<td>Service Layer SSOT</td>
+<td>여러 진입점이 동일한 서비스를 호출하여 로직 중복 제거</td>
+<td>DB 클라이언트 직접 사용 (기존 방식)</td>
+</tr>
+<tr>
+<td>ORM</td>
+<td>타입 안전한 ORM + 행 수준 보안</td>
+<td>타입 안전성과 보안을 동시에 확보</td>
+<td>BaaS 클라이언트 자동 보안</td>
+</tr>
+<tr>
+<td>스키마 관리</td>
+<td>서비스 레이어에서 원천 스키마 정의</td>
+<td>각 레이어가 원천 스키마에서 파생하여 단일 진실 원천 유지</td>
+<td>각 레이어에서 독립 스키마 정의</td>
+</tr>
+<tr>
+<td>AI 에이전트 통합</td>
+<td>도메인별 도구 + 인증</td>
+<td>AI 에이전트가 금융 데이터를 안전하게 조회/수정 가능</td>
+<td>REST API</td>
+</tr>
+<tr>
+<td>응답 타입</td>
+<td>통일된 결과 타입</td>
+<td>성공/실패를 일관된 타입으로 처리</td>
+<td>각 액션별 자체 타입 정의</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Notable Problem-Solving</h2>
+<p><strong>서비스 레이어 SSOT 전환.</strong> 기존에 DB 클라이언트를 직접 사용하던 구조를 서비스 레이어 중심으로 전면 전환했습니다. 한 번에 바꾸지 않고 도메인별로 점진적으로 진행하며, 각 단계마다 서비스 함수 작성 → 도구 전환 → 액션 전환 → 페이지 전환 → 레거시 삭제의 일관된 패턴을 따랐습니다. 아키텍처 문서에 전환 현황 표를 유지하며 진행 상황을 추적했습니다.</p>
+<p><strong>프레임워크 경계 버그 해결.</strong> 클라이언트/서버 경계에서 서버 전용 모듈을 import할 때 발생하는 런타임 에러를 발견하고, &quot;서버 전용 모듈은 클라이언트에서 import 금지 — 필요한 값은 로컬 상수로 복제&quot;라는 규칙을 수립하여 프로젝트 전체에 적용했습니다.</p>
+<p><strong>인라인 컴포넌트 안티패턴 발견.</strong> render 함수 내부에서 컴포넌트를 정의하면 re-render마다 상태가 초기화되는 문제를 진단하고, 해결책을 적용한 뒤 규칙으로 문서화했습니다.</p>
+<p><strong>도메인 용어 리네이밍.</strong> 도메인 용어가 부정확하다는 판단 하에 전체 스택에 걸친 대규모 리네이밍을 수행. 설계 문서를 먼저 작성하고 영향 범위를 파악한 후 실행했습니다.</p>
+<hr>
+<h2>Characteristics Revealed</h2>
+<p>이 프로젝트에서 특히 드러나는 특성은 <strong>체계적 문서화를 통한 아키텍처 거버넌스</strong>입니다. 서비스 레이어 아키텍처 문서는 단순한 설명이 아니라 &quot;이렇게 해야 한다&quot;는 규약(contract)입니다. 함수 시그니처 규약, 에러 처리 전략, 조합 패턴까지 명시되어 있어, 이 문서를 따르면 누구든 일관된 코드를 작성할 수 있습니다.</p>
+<p>또한 <strong>AI 에이전트 통합에 대한 선구적 접근</strong>이 눈에 띕니다. 개인 앱에 AI 에이전트 인터페이스를 내장하여 금융 데이터를 조회하고 조작할 수 있게 한 것은, &quot;앱은 AI 에이전트의 도구가 될 수 있다&quot;는 비전을 실현한 것입니다.</p>
+<hr>
+<h2>Git &amp; GitHub Analysis</h2>
+<ul>
+<li><strong>Commit style</strong>: 한글 Conventional Commits. 메시지가 변경 내용을 정확히 설명하며, 아키텍처적 맥락을 포함</li>
+<li><strong>Commit frequency</strong>: 단계별 집중 작업 패턴. 도메인별로 연속 커밋</li>
+<li><strong>PR patterns</strong>: feature branch에서 작업 후 squash merge 선호. PR 제목에 변경 범위 명시</li>
+<li><strong>Code quality signals</strong>: 명시적 반환 타입, 스키마 파생 구조, 서비스/어댑터 분리 등 일관된 코드 품질 기준</li>
+</ul>
+<hr>
+<h2>Summary</h2>
+<p>이 프로젝트는 Youngsup의 아키텍처 설계력이 가장 잘 드러나는 프로젝트입니다. Service Layer SSOT 패턴으로 여러 진입점을 통합하고, 이를 아키텍처 문서로 규약화한 것은 개인 프로젝트를 넘어선 엔지니어링 성숙도를 보여줍니다. 점진적 전환, 도메인별 정확한 질문, 그리고 실수를 규칙으로 전환하는 학습 패턴이 인상적이며, AI 에이전트 통합은 &quot;앱이 AI의 도구가 되는&quot; 미래를 먼저 구현한 사례입니다.</p>
+ </article> </div> </main> <footer class="py-12 mt-8"> <div class="max-w-6xl mx-auto px-6"> <div class="section-divider mb-8"></div> <div class="flex flex-col md:flex-row items-center justify-between gap-4"> <div class="flex items-center gap-4"> <a href="https://github.com/ohing504" target="_blank" rel="noopener noreferrer" class="text-text-dim hover:text-accent transition-colors" aria-label="GitHub"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> </div> <div class="text-center md:text-right"> <p class="text-xs text-text-dim">
+Introduced by My Agents · Built with
+<a href="https://github.com/ohing504/skills" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">@ohing504/skills</a> </p> <p class="text-xs text-text-dim mt-1">Last updated: 2026-03-13</p> </div> </div> </div> </footer>  <script type="module">const l=new IntersectionObserver(e=>{e.forEach(r=>{r.isIntersecting&&r.target.classList.add("visible")})},{threshold:.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll("[data-animate]").forEach(e=>{l.observe(e)});document.querySelectorAll(".prose-dark table").forEach(e=>{const r=Array.from(e.querySelectorAll("th")).map(t=>t.textContent?.trim()||"");e.querySelectorAll("tbody tr").forEach(t=>{t.querySelectorAll("td").forEach((a,o)=>{r[o]&&a.setAttribute("data-label",r[o])})})});</script> </body> </html>

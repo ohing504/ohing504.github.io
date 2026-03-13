@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Introduced by My Agents — AI 에이전트가 작성한 개발자 레퍼런스 포트폴리오"><meta property="og:title" content="Project Report: skills (agent-reference + agent-portfolio) — Youngsup Oh"><meta property="og:description" content="Introduced by My Agents — AI 에이전트가 작성한 개발자 레퍼런스 포트폴리오"><meta property="og:type" content="website"><meta property="og:url" content="https://ohing504.github.io"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"><title>Project Report: skills (agent-reference + agent-portfolio) — Youngsup Oh</title><link rel="stylesheet" href="/_astro/career.Zoe6Ivy9.css"></head> <body class="bg-bg text-text antialiased"> <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-accent focus:text-white focus:rounded-lg">Skip to content</a>  <main id="main" class="py-24 md:py-32"> <div class="max-w-4xl mx-auto px-6"> <div data-animate class="mb-12"> <a href="/" class="inline-flex items-center gap-1.5 text-sm text-text-dim hover:text-accent transition-colors mb-8"> <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"> <path d="M8 2L4 6l4 4"></path> </svg>
+Back
+</a> <h1 class="text-3xl md:text-4xl font-heading font-bold gradient-text">Project Report: skills (agent-reference + agent-portfolio)</h1> <div class="flex items-center gap-3 mt-3 text-sm text-text-dim"> <span></span> <span>·</span> <span></span> </div> </div> <article class="glass rounded-2xl p-6 md:p-10 prose-dark overflow-hidden"> <h1>Project Report: skills (agent-reference + agent-portfolio)</h1>
+<h2>Analysis Context</h2>
+<ul>
+<li><strong>Agent</strong>: Claude Code (claude-opus-4-6)</li>
+<li><strong>Project</strong>: skills — &quot;Introduced by My Agents&quot; (에이전트 레퍼런스 + 포트폴리오 스킬)</li>
+<li><strong>Privacy level</strong>: Full (공개 오픈소스)</li>
+<li><strong>Commits reviewed</strong>: 20 (전체 히스토리)</li>
+<li><strong>Sessions analyzed</strong>: 1,022 (스킬 개발 + 스킬 실행 세션 포함)</li>
+<li><strong>Period</strong>: 2026-03-07 ~ 2026-03-11 (약 5일)</li>
+<li><strong>Confidence</strong>: High (프로젝트 전체 생명주기를 함께 경험)</li>
+</ul>
+<hr>
+<h2>Project Overview</h2>
+<p>&quot;Introduced by My Agents&quot; — AI 에이전트가 사용자와의 실제 협업 데이터(세션 로그, git 히스토리, GitHub 프로필, 메모리 파일)를 분석하여 객관적인 레퍼런스 체크 리포트를 작성하고, 이를 기반으로 개인 포트폴리오 사이트를 생성하는 오픈소스 스킬 세트입니다.</p>
+<p>두 개의 독립 스킬로 구성됩니다:</p>
+<ul>
+<li><strong>agent-reference</strong>: 세션 히스토리, git, GitHub 데이터를 분석하여 User Profile + Project Report를 생성</li>
+<li><strong>agent-portfolio</strong>: 리포트를 기반으로 Astro 포트폴리오 사이트를 생성하고 GitHub Pages에 배포</li>
+</ul>
+<p>skills.sh 포맷을 준수하여 <code>npx skills add ohing504/skills</code>로 설치 가능하며, 코드가 아닌 프롬프트/문서 기반으로 동작합니다.</p>
+<p><strong>Tech Stack</strong>: Markdown (SKILL.md), skills.sh CLI 포맷, Astro (포트폴리오 생성 시), GitHub Pages</p>
+<hr>
+<h2>User&#39;s Role &amp; Contributions</h2>
+<p>Youngsup은 이 프로젝트의 창시자이자 설계자입니다. &quot;바이브 코딩 시대에 나와 가장 대화를 많이 하고, 내 작업 스타일을 가장 잘 아는 존재가 AI 에이전트&quot;라는 통찰에서 출발하여, 에이전트가 동료처럼 레퍼런스를 작성하는 컨셉을 설계했습니다.</p>
+<hr>
+<h2>Technical Decisions</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Chosen Approach</th>
+<th>Reasoning</th>
+<th>Alternatives Considered</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>구현 방식</td>
+<td>스킬 문서(프롬프트) 기반</td>
+<td>에이전트가 자기 세션 컨텍스트에서 자연스럽게 분석. 별도 파싱 코드 불필요</td>
+<td>스크립트/코드 기반 파서</td>
+</tr>
+<tr>
+<td>리포트 구조</td>
+<td>User Profile + Project Report 분리</td>
+<td>이력서 구조와 동일 — 사람 소개와 프로젝트 경험을 자연스럽게 분리</td>
+<td>단일 통합 리포트</td>
+</tr>
+<tr>
+<td>템플릿 엄격도</td>
+<td>러프한 가이드라인</td>
+<td>에이전트마다 고유한 관찰이 포함되어야 함</td>
+<td>엄격한 JSON 스키마</td>
+</tr>
+<tr>
+<td>페르소나</td>
+<td>고정하지 않음</td>
+<td>사용자마다 사용 에이전트가 다르고, 같은 에이전트도 맥락에 따라 역할이 달라짐</td>
+<td>CTO/PM 등 고정 역할</td>
+</tr>
+<tr>
+<td>포트폴리오</td>
+<td>별도 스킬로 분리</td>
+<td>agent-reference는 분석/리포트에 집중, 사이트 생성은 별도 관심사</td>
+<td>단일 스킬에 통합</td>
+</tr>
+<tr>
+<td>호스팅</td>
+<td>Astro + GitHub Pages</td>
+<td>정적 사이트, 무료 호스팅, Markdown 네이티브</td>
+<td>Vercel, Netlify</td>
+</tr>
+<tr>
+<td>신뢰도 표시</td>
+<td>메타데이터에 confidence level 포함</td>
+<td>세션 3개 vs 50개의 분석 깊이 차이를 명시 — 투명성 확보</td>
+<td>신뢰도 미표시</td>
+</tr>
+<tr>
+<td>서술 방식</td>
+<td>사용자 행동 패턴 기반</td>
+<td>도구 사용 통계 대신 의사결정 패턴을 기술</td>
+<td>도구 사용 통계 중심</td>
+</tr>
+<tr>
+<td>Review History</td>
+<td>리포트 하단에 구조화된 이력</td>
+<td>사용자 피드백을 투명하게 기록</td>
+<td>면책 조항 문구</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Notable Problem-Solving</h2>
+<p><strong>&quot;코드 없는 코드&quot; 설계.</strong> 이 프로젝트에는 런타임 코드가 없습니다. SKILL.md 파일이 에이전트에게 전달되는 프롬프트이자 사양서이자 실행 코드입니다. 분석 차원, 리포트 템플릿, GitHub 분석 가이드, 페르소나 매핑 등을 참조 문서로 분리하여 — 에이전트가 상황에 맞게 조합합니다. 빌드 시스템도, 의존성도, 테스트 코드도 없지만 정교하게 동작하는 &quot;프롬프트 아키텍처&quot;입니다.</p>
+<p><strong>멀티에이전트 데이터 소스 가이드.</strong> Claude Code 외에도 Cursor, Windsurf, Cline, Aider 등 다양한 에이전트에서 사용할 수 있도록, 각 에이전트의 데이터 저장 경로와 포맷을 문서화. &quot;에이전트 불가지론적(agent-agnostic)&quot; 설계를 지향합니다.</p>
+<p><strong>프라이버시 계층 설계.</strong> 리포지토리 분석 시 private repo의 데이터를 full/anonymized/stats-only/excluded로 분류할 수 있는 프라이버시 계층을 설계. 사용자가 원하지 않는 정보가 리포트에 노출되지 않도록 보호합니다.</p>
+<hr>
+<h2>Characteristics Revealed</h2>
+<p>이 프로젝트에서 가장 두드러지는 특성은 <strong>새로운 패러다임을 개척하는 사고력</strong>입니다. &quot;AI 에이전트가 동료처럼 레퍼런스를 써준다&quot;는 아이디어 자체가 독창적이며, 이를 &quot;코드 없는 프롬프트 아키텍처&quot;로 구현한 것은 LLM의 본질을 깊이 이해하고 있음을 보여줍니다.</p>
+<p><strong>설계 문서화에 대한 집착</strong>도 이 프로젝트에서 극대화됩니다. 모든 설계 결정과 그 이유를 기록하고, 출처까지 명시합니다. 프로젝트가 5일밖에 안 되었지만 설계 의사결정 로그가 이미 다수의 항목을 포함합니다.</p>
+<p>또한 <strong>생태계 참여 의식</strong>이 보입니다. skills.sh 포맷을 준수하고, 영문 기반으로 README를 작성하고, 멀티에이전트 호환성을 고려하는 것은 — 자신만의 도구가 아니라 커뮤니티가 사용할 수 있는 공공재로 설계했다는 의미입니다.</p>
+<hr>
+<h2>Git &amp; GitHub Analysis</h2>
+<ul>
+<li><strong>Commit style</strong>: 영문 Conventional Commits (feat, fix, refactor, docs). 스코프 명시 (agent-reference, agent-portfolio)</li>
+<li><strong>Commit frequency</strong>: 5일 간 집중 개발. 초기 설계 → 구현 → 리뷰 반영 → 문서화의 빠른 사이클</li>
+<li><strong>Development pattern</strong>: 체계적 진행 — 설계 → 기능 구축 → 감사 반영 → 문서 개선</li>
+<li><strong>Public repo</strong>: ohing504/skills, MIT 라이선스, skills.sh 생태계 호환</li>
+</ul>
+<hr>
+<h2>Summary</h2>
+<p>skills 프로젝트는 Youngsup의 가장 독창적인 아이디어가 구현된 프로젝트입니다. &quot;AI 에이전트가 동료처럼 레퍼런스를 작성한다&quot;는 컨셉은 바이브 코딩 시대의 새로운 자기소개 패러다임을 제안하며, 이를 런타임 코드 없이 프롬프트 문서만으로 구현한 것은 LLM 네이티브 설계의 좋은 사례입니다. 5일이라는 짧은 기간에 설계 문서, 두 개의 스킬, 멀티에이전트 호환성, 프라이버시 계층까지 갖춘 실행력, 그리고 skills.sh 생태계에 맞춘 공공재 지향이 인상적입니다.</p>
+ </article> </div> </main> <footer class="py-12 mt-8"> <div class="max-w-6xl mx-auto px-6"> <div class="section-divider mb-8"></div> <div class="flex flex-col md:flex-row items-center justify-between gap-4"> <div class="flex items-center gap-4"> <a href="https://github.com/ohing504" target="_blank" rel="noopener noreferrer" class="text-text-dim hover:text-accent transition-colors" aria-label="GitHub"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"> <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path> </svg> </a> </div> <div class="text-center md:text-right"> <p class="text-xs text-text-dim">
+Introduced by My Agents · Built with
+<a href="https://github.com/ohing504/skills" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">@ohing504/skills</a> </p> <p class="text-xs text-text-dim mt-1">Last updated: 2026-03-13</p> </div> </div> </div> </footer>  <script type="module">const l=new IntersectionObserver(e=>{e.forEach(r=>{r.isIntersecting&&r.target.classList.add("visible")})},{threshold:.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll("[data-animate]").forEach(e=>{l.observe(e)});document.querySelectorAll(".prose-dark table").forEach(e=>{const r=Array.from(e.querySelectorAll("th")).map(t=>t.textContent?.trim()||"");e.querySelectorAll("tbody tr").forEach(t=>{t.querySelectorAll("td").forEach((a,o)=>{r[o]&&a.setAttribute("data-label",r[o])})})});</script> </body> </html>
